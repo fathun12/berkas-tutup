@@ -1,0 +1,16 @@
+/* laporan saksi */
+.laporan { display: grid; gap: 22px; }
+
+.saksi h3 {
+  margin-bottom: 8px;
+  font-family: var(--f-ui);
+  font-weight: 600;
+  font-size: 1rem;
+}
+.saksi h3 small {
+  font-weight: 400;
+  font-style: italic;
+  font-size: .9rem;
+}
+
+.kalimat-daftar { display: grid; gap: 8px; list-style: none; }

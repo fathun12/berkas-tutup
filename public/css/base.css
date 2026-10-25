@@ -1,0 +1,176 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+html {
+  background: var(--meja);
+  color: var(--kertas);
+  font-family: var(--f-ui);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+body { min-height: 100vh; }
+button { font: inherit; color: inherit; }
+
+/* bilah status */
+.hud {
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--tinta);
+  border-bottom: var(--b) solid var(--ket);
+}
+.hud-sel {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 18px;
+  border-right: var(--b) solid var(--ket);
+}
+.hud-sel small { color: var(--ket); font-size: .75rem; }
+.hud-sel strong {
+  font-family: var(--f-judul);
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.2;
+}
+.kotak {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
+  border: var(--b) solid var(--kertas);
+}
+.kotak.penuh { background: var(--stempel); }
+
+/* pita berjalan */
+.pita {
+  overflow: hidden;
+  background: var(--penjepit);
+  color: var(--tinta);
+  border-bottom: var(--b) solid var(--tinta);
+}
+.pita-jalur {
+  display: flex;
+  width: max-content;
+  animation: pita 36s linear infinite;
+}
+.pita-jalur span {
+  flex: none;
+  padding: 6px 0;
+  font-family: var(--f-judul);
+  font-size: 1rem;
+  white-space: pre;
+}
+@keyframes pita {
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pita-jalur { animation: none; }
+}
+
+/* meja dan berkas */
+#meja {
+  min-height: 100vh;
+  padding: 56px 16px 64px;
+  background-image:
+    linear-gradient(rgba(148, 137, 121, .16) 2px, transparent 2px),
+    linear-gradient(90deg, rgba(148, 137, 121, .16) 2px, transparent 2px);
+  background-size: 48px 48px;
+}
+
+.berkas {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 36px 28px 28px;
+  background: var(--kertas);
+  color: var(--tinta);
+  border: var(--b) solid var(--tinta);
+  box-shadow: var(--bayang-meja);
+  font-family: var(--f-dok);
+}
+.berkas::before {
+  content: "";
+  position: absolute;
+  top: -28px;
+  left: 24px;
+  width: 96px;
+  height: 28px;
+  background: var(--penjepit);
+  border: var(--b) solid var(--tinta);
+  border-bottom: 0;
+}
+.nomor {
+  display: inline-block;
+  margin-bottom: 14px;
+  padding: 2px 12px;
+  background: var(--tinta);
+  color: var(--kertas);
+  border: var(--b) solid var(--tinta);
+  box-shadow: var(--bayang);
+  font-family: var(--f-ui);
+  font-weight: 600;
+  font-size: .85rem;
+  transform: rotate(-3deg);
+}
+.berkas h1 {
+  font-family: var(--f-judul);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 9vw, 4.8rem);
+  line-height: .95;
+}
+.berkas h2 {
+  margin: 28px 0 10px;
+  padding-bottom: 4px;
+  border-bottom: var(--b) solid var(--tinta);
+  font-family: var(--f-judul);
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+.meta { margin-top: 8px; font-style: italic; }
+.ringkas { margin-top: 14px; }
+
+.bukti { display: grid; gap: 10px; list-style: none; }
+.bukti li { padding-left: 12px; border-left: var(--b) solid var(--tinta); }
+.kode {
+  padding: 0 6px;
+  background: var(--sorot);
+  border: 2px solid var(--tinta);
+  font-family: var(--f-ui);
+  font-weight: 600;
+  font-size: .8rem;
+}
+
+/* tombol */
+.pilihan { display: flex; flex-wrap: wrap; gap: 14px; }
+.btn {
+  padding: 10px 18px;
+  background: var(--kertas);
+  color: var(--tinta);
+  border: var(--b) solid var(--tinta);
+  box-shadow: var(--bayang);
+  font-family: var(--f-judul);
+  cursor: pointer;
+}
+.btn:hover:not(:disabled) { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--tinta); }
+.btn:active:not(:disabled) { transform: translate(4px, 4px); box-shadow: 0 0 0 var(--tinta); }
+.btn:disabled { cursor: not-allowed; }
+.btn.salah { background: var(--stempel); text-decoration: line-through; }
+.btn:focus-visible { outline: var(--b) solid var(--tinta); outline-offset: 4px; }
+
+/* pesan */
+.pesan {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+  margin-top: 24px;
+  padding: 12px 14px;
+  background: var(--sorot);
+  border: var(--b) solid var(--tinta);
+}
+.pesan.benar { background: var(--benar); }
+.pesan.gagal { background: var(--stempel); }

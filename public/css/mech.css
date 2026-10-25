@@ -1,0 +1,119 @@
+/* kalimat yang bisa dicoret */
+.kalimat {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  background: transparent;
+  color: var(--tinta);
+  border: var(--b) solid var(--tinta);
+  font-family: var(--f-dok);
+  font-size: 1rem;
+  line-height: 1.5;
+  text-align: left;
+  cursor: pointer;
+}
+.kalimat:hover:not(:disabled) {
+  background: var(--sorot);
+  transform: translate(-3px, -3px);
+  box-shadow: var(--bayang);
+}
+.kalimat:active:not(:disabled) {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+.kalimat:focus-visible { outline: var(--b) solid var(--tinta); outline-offset: 4px; }
+.kalimat:disabled { cursor: default; }
+
+/* palsu, sudah dicoret */
+.kalimat.coret {
+  border-style: dashed;
+  text-decoration: line-through;
+  text-decoration-thickness: 4px;
+}
+
+/* benar, salah dicoret, terkunci */
+.kalimat.cocok { background: var(--benar); }
+
+.tanda {
+  display: inline-block;
+  margin-left: 8px;
+  font-family: var(--f-ui);
+  font-weight: 600;
+  font-size: .75rem;
+  text-decoration: none;
+}
+
+/* tersangka yang terbukti benar */
+.btn.tepat { background: var(--benar); }
+
+/* judul kecil di papan jam dan benang */
+.jam-papan h3,
+.benang-papan h3,
+.simpul-kelompok h3 {
+  margin: 18px 0 8px;
+  font-family: var(--f-ui);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* mekanik jam: garis waktu */
+.garis { display: grid; gap: 8px; list-style: none; }
+.garis li {
+  padding: 8px 12px;
+  border: var(--b) solid var(--tinta);
+}
+.garis .garis-isi { background: var(--benar); }
+.garis .slot { border-style: dashed; color: var(--ket); }
+.garis .berikut { background: var(--sorot); color: var(--tinta); }
+.garis .baru { animation: turun .3s ease-out both; }
+.jam {
+  display: inline-block;
+  padding: 0 8px;
+  background: var(--tinta);
+  color: var(--kertas);
+  font-family: var(--f-judul);
+  font-size: .9rem;
+}
+@keyframes turun {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* mekanik benang: simpul dan benang */
+.simpul-kelompok .pilihan { gap: 10px; }
+.kalimat.simpul { display: inline-block; width: auto; }
+.kalimat.simpul.pilih {
+  background: var(--sorot);
+  transform: translate(-3px, -3px);
+  box-shadow: var(--bayang);
+}
+
+.benang-daftar { display: grid; gap: 14px; list-style: none; }
+.benang-baris {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+}
+.benang-ujung {
+  padding: 2px 10px;
+  background: var(--sorot);
+  border: var(--b) solid var(--tinta);
+  font-weight: 600;
+}
+.tali {
+  height: 8px;
+  background: var(--stempel);
+  border: 2px solid var(--tinta);
+  transform-origin: left center;
+}
+.tali.baru { animation: tarik .35s ease-out both; }
+.alasan { grid-column: 1 / -1; font-size: .95rem; }
+@keyframes tarik {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .garis .baru, .tali.baru { animation: none; }
+}

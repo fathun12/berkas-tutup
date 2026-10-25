@@ -1,0 +1,18 @@
+:root {
+  --meja: #222831;
+  --kertas: #DFD0B8;
+  --tinta: #393E46;
+  --ket: #948979;
+  --benar: #A3DDCB;
+  --sorot: #E8E9A1;
+  --penjepit: #E6B566;
+  --stempel: #E5707E;
+
+  --b: 4px;
+  --bayang: 4px 4px 0 var(--tinta);
+  --bayang-meja: 10px 10px 0 rgba(0, 0, 0, .55);
+
+  --f-dok: 'Special Elite', 'Courier New', monospace;
+  --f-judul: 'Archivo Black', 'Arial Black', sans-serif;
+  --f-ui: 'Archivo', Arial, sans-serif;
+}
